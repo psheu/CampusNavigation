@@ -6,3 +6,12 @@ It is often difficult to find the most direct route to classes, particularly for
 The Get Me There project is a new product that will consist of a mobile application and, in the future, a web portal. The mobile application will need to use the GPS location application within the mobile phone to find the location of the user. The GPS will provide the application with locations of both the user and the selected destination. Once the user destination is acquired, the system will provide the user with three most efficient routes ranked according to the user’s entered priority criterion: SPEED (fastest) or WEATHER (indoor/covered routing maximized), or SCENIC (lake-side routing maximized).
 
 Overall, our system hopes to improve convenience, efficiency and the “happiness factor” throughout the Loyola community by making it easier to get around on campus. 
+
+
+##Features
+
+##Installation
+
+##Support
+
+##License
