@@ -1,13 +1,10 @@
 package com.example.student.campusnavigation;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.location.Criteria;
-import android.location.Location;
 import android.location.LocationManager;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,7 +36,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker").snippet("Snippet"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.998, -87.66)).title("Marker").snippet("Snippet"));
 
         // Enable MyLocation Layer of Google Map
         //mMap.setMyLocationEnabled(true);
