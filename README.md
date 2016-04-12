@@ -15,3 +15,6 @@ Overall, our system hopes to improve convenience, efficiency and the “happines
 ##Support
 
 ##License
+
+
+https://github.com/nekdenis/Permissions_sample/blob/master/app/src/main/java/nekdenis/github/com/permissions_sample/MapsActivity2.java
