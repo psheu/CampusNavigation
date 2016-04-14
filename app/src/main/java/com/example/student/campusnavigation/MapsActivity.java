@@ -32,6 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.getUiSettings().setZoomControlsEnabled(true);
         LatLng loyola = new LatLng(41.998, -87.659);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(loyola));
         mMap.animateCamera(CameraUpdateFactory.zoomTo((float) 15.5));
