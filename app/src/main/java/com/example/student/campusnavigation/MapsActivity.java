@@ -54,7 +54,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void addDrawerItems() {
-        String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
+        String[] osArray = { "Alumni House","Arnold Fine Arts Annex","Bellarmine Hall","BVM Hall",
+                            "Campion Hall","Canisius Hall","Centennial Forum","Coffey Hall",
+                            "Crown Center","Cudahy Library","Cudahy Science Hall","Cuneo Hall",
+                            "Damen Student Center","de Nobili Hall","Dumbach Hall","Fairfield Hall",
+                            "Flanner Hall","Fordham Hall","Gentile Arena","Georgetown Hall",
+                            "Granada Center","Halas Sports Center","Ignatius House",
+                            "Institute of Environmental Sustainability","International House",
+                            "Klarchek Information Commons","LeMoyne Hall","Madonna della Strada Chapel",
+                            "Marquette Hall","Marquette South","Mertz Hall","Messina Hall",
+                            "Mundelein Center","Norville Athletics Center","Piper Hall",
+                            "Quinlan Life Sciences Building","Regis Hall","San Francisco Hall",
+                            "Santa Clara Hall","Seattle Hall","Simpson Hall","Spring Hill Hall",
+                            "Sullivan Center","Xavier Hall"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
