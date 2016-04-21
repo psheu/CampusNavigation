@@ -84,6 +84,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (mMap != null) {
+                    mMap.clear();
+                }
                 switch (position) {
                     case 0:
                         mMap.addMarker(new MarkerOptions().position(new LatLng(41.996831, -87.658709)).title("Alumni House"));
@@ -92,7 +95,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         mMap.addMarker(new MarkerOptions().position(new LatLng(41.997924, -87.658709)).title("Arnold Fine Arts Annex"));
                         break;
                 }
-
             }
         });
     }
@@ -160,26 +162,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        //mMap.getUiSettings().setZoomGesturesEnabled(false);
-        //mMap.getUiSettings().setScrollGesturesEnabled(false);
+
         LatLng loyola = new LatLng(41.998, -87.659);
-        double maxZoom = 15.5;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loyola, (float) maxZoom));
-        //final CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.998, -87.659)).zoom((float) maxZoom).bearing(0).build(); //replace with your current lat long and try
-        //mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loyola, (float) 15.5));
         if (checkPermissions()) {
             setMyLocationEnabled();
         }
-        //mMap.animateCamera(CameraUpdateFactory.zoomTo((float) 15.5));
+
     }
-
-
-    /*public void onCameraChange(CameraPosition position) {
+    /*
+    public void onCameraChange(CameraPosition position) {
         double maxZoom = 15.5;
         if (position.zoom > maxZoom) {
             mMap.animateCamera(CameraUpdateFactory.zoomTo((float) maxZoom));
         }
     }*/
+
 
 
     private boolean checkPermissions() {
