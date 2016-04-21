@@ -3,6 +3,7 @@ package com.example.student.campusnavigation;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -21,18 +22,21 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final int REQUEST_FINE_LOCATION = 11;
     private GoogleMap mMap;
 
+
     private ListView mDrawerList;
     private ArrayAdapter<String> mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
 
         mDrawerList = (ListView)findViewById(R.id.navList);mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
@@ -52,29 +58,46 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
+
+
+    private void setUpMap() {
+        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+    }
+
     private void addDrawerItems() {
         String[] osArray = { "Alumni House","Arnold Fine Arts Annex","Bellarmine Hall","BVM Hall",
-                            "Campion Hall","Canisius Hall","Centennial Forum","Coffey Hall",
-                            "Crown Center","Cudahy Library","Cudahy Science Hall","Cuneo Hall",
-                            "Damen Student Center","de Nobili Hall","Dumbach Hall","Fairfield Hall",
-                            "Flanner Hall","Fordham Hall","Gentile Arena","Georgetown Hall",
-                            "Granada Center","Halas Sports Center","Ignatius House",
-                            "Institute of Environmental Sustainability","International House",
-                            "Klarchek Information Commons","LeMoyne Hall","Madonna della Strada Chapel",
-                            "Marquette Hall","Marquette South","Mertz Hall","Messina Hall",
-                            "Mundelein Center","Norville Athletics Center","Piper Hall",
-                            "Quinlan Life Sciences Building","Regis Hall","San Francisco Hall",
-                            "Santa Clara Hall","Seattle Hall","Simpson Hall","Spring Hill Hall",
-                            "Sullivan Center","Xavier Hall"};
+                "Campion Hall","Canisius Hall","Centennial Forum","Coffey Hall",
+                "Crown Center","Cudahy Library","Cudahy Science Hall", "Cuneo Hall",
+                "Damen Student Center","de Nobili Hall","Dumbach Hall","Fairfield Hall",
+                "Flanner Hall","Fordham Hall","Gentile Arena","Georgetown Hall",
+                "Granada Center","Halas Sports Center","Ignatius House",
+                "Institute of Environmental Sustainability","International House",
+                "Klarchek Information Commons","LeMoyne Hall", "Madonna della Strada Chapel",
+                "Marquette Hall", "Marquette South", "Mertz Hall", "Messina Hall",
+                "Mundelein Center", "Norville Athletics Center", "Piper Hall",
+                "Quinlan Life Sciences Building", "Regis Hall", "San Francisco Hall",
+                "Santa Clara Hall", "Seattle Hall", "Simpson Hall", "Spring Hill Hall",
+                "Sullivan Center", "Xavier Hall"};
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(41.996831, -87.658709)).title("Alumni House"));
+                        break;
+                    case 1:
+                        mMap.addMarker(new MarkerOptions().position(new LatLng(41.997924, -87.658709)).title("Arnold Fine Arts Annex"));
+                        break;
+                }
+
             }
         });
     }
+
+
 
     private void setupDrawer() {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
@@ -98,6 +121,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }*/
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -117,16 +160,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        //mMap.getUiSettings().setZoomGesturesEnabled(false);
+        //mMap.getUiSettings().setScrollGesturesEnabled(false);
         LatLng loyola = new LatLng(41.998, -87.659);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(loyola));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo((float) 15.5));
+        double maxZoom = 15.5;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loyola, (float) maxZoom));
+        //final CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(41.998, -87.659)).zoom((float) maxZoom).bearing(0).build(); //replace with your current lat long and try
+        //mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         if (checkPermissions()) {
             setMyLocationEnabled();
         }
+        //mMap.animateCamera(CameraUpdateFactory.zoomTo((float) 15.5));
     }
 
 
+    /*public void onCameraChange(CameraPosition position) {
+        double maxZoom = 15.5;
+        if (position.zoom > maxZoom) {
+            mMap.animateCamera(CameraUpdateFactory.zoomTo((float) maxZoom));
+        }
+    }*/
 
 
     private boolean checkPermissions() {
@@ -185,5 +238,3 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 }
-
-
