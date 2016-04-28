@@ -168,6 +168,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         LatLng loyola = new LatLng(41.998, -87.659);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loyola, (float) 15.5));
         if (checkPermissions()) {
