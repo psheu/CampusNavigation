@@ -48,11 +48,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        mDrawerList = (ListView)findViewById(R.id.navList);mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView)findViewById(R.id.navList);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
 
         addDrawerItems();
         setupDrawer();
+        mDrawerLayout.closeDrawers();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -81,7 +83,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
         mDrawerList.setAdapter(mAdapter);
 
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mMap != null) {
@@ -94,6 +96,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     case 1:
                         mMap.addMarker(new MarkerOptions().position(new LatLng(41.997924, -87.658709)).title("Arnold Fine Arts Annex"));
                         break;
+                }
+                if (mDrawerLayout != null) {
+                    mDrawerLayout.closeDrawers();
                 }
             }
         });
@@ -155,7 +160,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
