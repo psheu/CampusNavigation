@@ -21,7 +21,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
@@ -45,8 +47,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
 
         mDrawerList = (ListView)findViewById(R.id.navList);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -84,24 +84,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mDrawerList.setAdapter(mAdapter);
 
                 mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (mMap != null) {
-                    mMap.clear();
-                }
-                switch (position) {
-                    case 0:
-                        mMap.addMarker(new MarkerOptions().position(new LatLng(41.996831, -87.658709)).title("Alumni House"));
-                        break;
-                    case 1:
-                        mMap.addMarker(new MarkerOptions().position(new LatLng(41.997924, -87.658709)).title("Arnold Fine Arts Annex"));
-                        break;
-                }
-                if (mDrawerLayout != null) {
-                    mDrawerLayout.closeDrawers();
-                }
-            }
-        });
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        if (mMap != null) {
+                            mMap.clear();
+                        }
+                        switch (position) {
+                            case 0:
+                                mMap.addMarker(new MarkerOptions().position(new LatLng(41.996831, -87.658709)).title("Alumni House")).showInfoWindow();
+                                break;
+                            case 1:
+                                mMap.addMarker(new MarkerOptions().position(new LatLng(41.997924, -87.658709)).title("Arnold Fine Arts Annex")).showInfoWindow();
+                                break;
+                        }
+                        if (mDrawerLayout != null) {
+                            mDrawerLayout.closeDrawers();
+                        }
+                    }
+                });
     }
 
 
@@ -174,6 +174,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (checkPermissions()) {
             setMyLocationEnabled();
         }
+
+
 
     }
     /*
