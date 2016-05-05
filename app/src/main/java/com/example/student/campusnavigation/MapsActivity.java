@@ -11,22 +11,29 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.Arrays;
 
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -39,6 +46,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
+    private EditText mText;
+    private Button goButton;
 
 
 
@@ -65,14 +74,51 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 findViewById(R.id.editText1);
         textView.setAdapter(adapter);
 
+        addSearchItems();
+        buttonClick();
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
 
+    private void addSearchItems(){
+        mText = (EditText) findViewById(R.id.editText1);
+        mText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    performSearch();
+                    handled = true;
+                }
+                return handled;
+            }
+        });
+    }
 
-    private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+    private void performSearch(){
+        String text = mText.getText().toString();
+        String[] list = getResources().getStringArray(R.array.buildings_array);
+        boolean actualBuilding = Arrays.asList(list).contains(text);
+        if (!actualBuilding){
+            Toast toast = Toast.makeText(this, "Not a Loyola building!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+        else {
+
+        }
+    }
+
+    private void buttonClick(){
+        goButton = (Button) findViewById(R.id.button1);
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                performSearch();
+            }
+        });
     }
 
     private void addDrawerItems() {
@@ -293,6 +339,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -312,8 +359,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
         // Activate the navigation drawer toggle
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -389,8 +434,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-
-
 
 
 }
