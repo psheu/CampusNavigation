@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -56,6 +57,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         addDrawerItems();
         setupDrawer();
         mDrawerLayout.closeDrawers();
+
+        String[] list = getResources().getStringArray(R.array.buildings_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, list);
+        AutoCompleteTextView textView = (AutoCompleteTextView)
+                findViewById(R.id.editText1);
+        textView.setAdapter(adapter);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

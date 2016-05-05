@@ -32,6 +32,7 @@
             android:padding="10dp"
             android:inputType="text"
             android:hint="@string/hint1"
+            android:completionThreshold="1"
             android:labelFor="@+id/editText1"/>
 
         <Button
