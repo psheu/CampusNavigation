@@ -5,4 +5,50 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="hint1"><i>Enter Name of Building</i></string>
+    <string-array name="buildings_array">
+        <item>Alumni House</item>
+        <item>Arnold Fine Arts Annex</item>
+        <item>Bellarmine Hall</item>
+        <item>BVM Hall</item>
+        <item>Campion Hall</item>
+        <item>Canisius Hall</item>
+        <item>Centennial Forum</item>
+        <item>Coffey Hall</item>
+        <item>Crown Center</item>
+        <item>Cudahy Library</item>
+        <item>Cudahy Science Hall</item>
+        <item>Cuneo Hall</item>
+        <item>Damen Student Center</item>
+        <item>de Nobili Hall</item>
+        <item>Dumbach Hall</item>
+        <item>Fairfield Hall</item>
+        <item>Flanner Hall</item>
+        <item>Fordham Hall</item>
+        <item>Gentile Arena</item>
+        <item>Georgetown Hall</item>
+        <item>Granada Center</item>
+        <item>Halas Sports Center</item>
+        <item>Ignatius House</item>
+        <item>Institute of Environmental Sustainability</item>
+        <item>International House</item>
+        <item>Klarchek Information Commons</item>
+        <item>LeMoyne Hall</item>
+        <item>Madonna della Strada Chapel</item>
+        <item>Marquette Hall</item>
+        <item>Marquette South</item>
+        <item>Mertz Hall</item>
+        <item>Messina Hall</item>
+        <item>Mundelein Center</item>
+        <item>Norville Athletics Center</item>
+        <item>Piper Hall</item>
+        <item>Quinlan Life Sciences Building</item>
+        <item>Regis Hall</item>
+        <item>San Francisco Hall</item>
+        <item>Santa Clara Hall</item>
+        <item>Seattle Hall</item>
+        <item>Simpson Hal</item>
+        <item>Spring Hill Hall</item>
+        <item>Sullivan Center</item>
+        <item>"Xavier Hall</item>
+    </string-array>
 </resources>
