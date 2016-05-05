@@ -50,6 +50,53 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Button goButton;
 
 
+    Building Alumni = new Building("Alumni House", 41.996831, -87.658709);
+    Building Arnold = new Building ("Arnold Fine Arts Annex", 41.997924, -87.658709);
+    Building Bellarmine = new Building ("Bellarmine Hall", 42.003183, -87.661064);
+    Building BVM = new Building ("BVM Hall", 41.998059, -87.656646);
+    Building Campion = new Building ("Campion Hall", 42.002059, -87.660208);
+    Building Canisius = new Building ("Canisius Hall", 41.995984, -87.657364);
+    Building CFSU = new Building ("Centennial Forum", 42.001301, -87.659900);
+    Building Coffey = new Building ("Coffey Hall", 41.998919, -87.655802);
+    Building Crown = new Building ("Crown Center", 42.001344, -87.656512);
+    Building Library = new Building ("Cudahy Library", 42.000767, -87.656875);
+    Building Cudahy= new Building ("Cudahy Science Hall", 41.999885, -87.657843);
+    Building Cuneo = new Building ("Cuneo Hall",41.999213, -87.657273);
+    Building Damen = new Building ("Damen Student Center", 42.000527, -87.660019);
+    Building deNob= new Building ("de Nobili Hall", 41.997812, -87.657537);
+    Building Dumbach = new Building ("Dumbach Hall", 42.000427, -87.657842);
+    Building Fairfield = new Building ("Fairfield Hall", 41.995649, -87.658770);
+    Building Flanner = new Building ("Flanner Hall", 41.998546, -87.658278);
+    Building Fordham = new Building ("Fordham Hall", 41.999712, -87.660317);
+    Building Gentile = new Building ("Gentile Arena", 42.000648, -87.659118);
+    Building Georgetown = new Building ("Georgetown Hall", 41.996763, -87.656535);
+    Building Grenada = new Building ("Grenada Center", 41.999655, -87.660282);
+    Building Halas = new Building ("Halas Sports Center", 41.999646, -87.659472);
+    Building Ignatius = new Building ("Ignatius House", 41.997332, -87.657401);
+    Building IES = new Building ("Institute of Environmental Sustainability", 41.997741, -87.656651);
+    Building International = new Building ("International House", 41.995952, -87.658773);
+    Building IC = new Building ("Klarchek Information Commons", 42.000178, -87.656301);
+    Building LeMoyne = new Building ("LeMoyne Hall", 41.996654, -87.658770);
+    Building Madonna = new Building ("Madonna della Strada Chapel", 41.999555, -87.656262);
+    Building Marquette = new Building ("Marquette Hall", 41.996190, -87.656642);
+    Building MarquetteS= new Building ("Marquette South", 41.995897, -87.656639);
+    Building Mertz = new Building ("Mertz Hall", 42.001250, -87.659604);
+    Building Messina = new Building ("Messina Hall", 41.995384, -87.658017);
+    Building Mundelein = new Building ("Mundelein Center", 41.998780, -87.656609);
+    Building Norville = new Building ("Norville Athletic Center", 42.000540, -87.658957);
+    Building Piper = new Building ("Piper Hall", 41.998679, -87.655532);
+    Building Quinlan = new Building ("Quinlan Life Science Building", 41.998673, -87.657769);
+    Building Regis = new Building ("Regis Hall", 41.997818, -87.658921);
+    Building SanFran = new Building ("San Francisco Hall", 41.997020, -87.656826);
+    Building SantaClara= new Building ("Santa Clara Hall", 42.001873, -87.656610);
+    Building Seattle = new Building ("Seattle Hall", 41.996792, -87.657920);
+    Building Simpson = new Building ("Simpson Hall", 41.997651, -87.658228);
+    Building SpringHill = new Building ("Spring Hill Hall", 41.995017, -87.658072);
+    Building Sullivan = new Building ("Sullivan Center", 41.997813, -87.655049);
+    Building Xavier = new Building ("Xavier Hall", 41.996708, -87.658100);
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
