@@ -1,5 +1,7 @@
 package com.example.student.campusnavigation;
 
+//Creates a building object
+
 public class Building {
     public String name;
     public double lat;

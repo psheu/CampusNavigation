@@ -96,8 +96,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     Building Xavier = new Building ("Xavier Hall", 41.996708, -87.658100);
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,7 +126,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
-
+    //Takes input in search bar and adds action to it
     private void addSearchItems(){
         mText = (EditText) findViewById(R.id.editText1);
         mText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -144,6 +142,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+    //function of clicking button/search
     private void performSearch(){
         String text = mText.getText().toString();
         String[] list = getResources().getStringArray(R.array.buildings_array);
@@ -168,6 +167,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+    //what happens when a building in the list is clicked
     private void addDrawerItems() {
         String[] osArray = getResources().getStringArray(R.array.buildings_array);
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
