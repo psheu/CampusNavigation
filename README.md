@@ -9,6 +9,7 @@ Overall, our system hopes to improve convenience, efficiency and the “happines
 
 
 ##Features
+Click the menu button in top left corner to browse throught a list of Loyola Buildings. Click one to see where it is located. If you already know the building name, type its name in the search bar and get going!
 
 ##Installation
 
